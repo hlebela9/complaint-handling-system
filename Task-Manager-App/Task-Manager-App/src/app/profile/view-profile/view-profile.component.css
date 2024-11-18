@@ -1,0 +1,61 @@
+.main-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+mat-card{
+    margin-top: 1em;
+    height: 90%;
+    width: 80%;
+    border: 1px solid #7575ff;
+}
+
+.header{
+    background-color: #7575ff;
+    color: white;
+    height: 3em;
+}
+
+.info-container{
+    height: 100%;
+    width: 100%;
+}
+
+.info{
+    margin-top: 4em;
+}
+
+.info h3{
+    border: 1px solid #7575ff;
+    background-color: #7575ff69;
+    height: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.info h3:hover{
+    color: rgb(48, 3, 48);
+    background-color: #7575ff;
+    cursor: pointer;
+}
+
+.right{
+    width: 80%;
+}
+
+.left{
+    width: 18%;
+}
+
+.left button:hover{
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+.CP{
+    margin-top: 2em;
+}

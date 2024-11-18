@@ -1,0 +1,100 @@
+<div class="full-height flex center-center">
+  <div class="height-90 full-width gap-1 flex">
+    <div class="flex gap-1 column">
+      <div class="flex gap-1">
+        <mat-card class="card flex center-center">
+          <mat-card-content class="width-80 column gap-1">
+            <h5 *ngIf="!approvedSchedule.length">Total Users</h5>
+            <div *ngIf="approvedSchedule.length">
+              <div class="flex center-center gap-1" class="flex column center-center">
+                <h4>Total Users for Today</h4>
+                <div class="flex gap05">
+                  <mat-icon class="icon">calendar_today</mat-icon>
+                  <h3>{{ totalUsers }}</h3>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="card flex center-center">
+          <mat-card-content class="width-80 flex column gap-1">
+            <h5 *ngIf="!monthSchedules.length">Total Tasks</h5>
+            <div *ngIf="monthSchedules.length" class="flex column gap-1">
+              <div class="flex center-center gap-1">
+                <mat-icon class="icon">calendar_month</mat-icon>
+                <h3>{{ totalTasks }}</h3>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-card class="full-width flex-1 padding-15">
+        <mat-card-content class="flex column gap-1">
+          <h3 *ngIf="user.role !== 'doctor'">Appointments</h3>
+          <h3 *ngIf="user.role === 'doctor'">Approved Appointments</h3>
+          <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+          </mat-form-field>
+
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+              <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let row"> {{row.Name}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Email" *ngIf="user.role !== 'doctor'">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let row"> {{row.Email}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Role">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
+                <td mat-cell *matCellDef="let row"> {{row.Role}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Actions">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                <td mat-cell *matCellDef="let row"> 
+                  <button mat-icon-button color="primary">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+              </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-card class="large-card flex-1 full-width">
+      <mat-card-content class="full-width padding-15 flex column">
+        <h4 class="text-center">Recent Activities</h4>
+        <div >
+          <div class="pointer padding-15">
+            <p class="margin-5px"></p>
+            <p class="margin-5px"></p>
+            <div class="flex gap05">
+              <small></small>
+              <small></small>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

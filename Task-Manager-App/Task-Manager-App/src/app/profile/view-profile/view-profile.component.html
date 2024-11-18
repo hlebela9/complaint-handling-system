@@ -1,0 +1,42 @@
+<div class="main-container flex">
+
+    <div class="right">
+        <mat-card>
+            <div class="header flex center-center">
+                <h3>
+                    Your Profile
+                </h3>
+            </div>
+            <div class="info-container">
+    
+                <div class="info flex column">
+    
+                    <h3>
+                        Full Name: {{user.fullName}}
+                    </h3>
+    
+                    <h3>
+                        email: {{user.email}}
+                    </h3>
+    
+                    <h3>
+                        ID number: {{user.identityNO}}
+                    </h3>
+    
+                    <h3>
+                        role: {{user.role}}
+                    </h3>
+    
+                    <h3>
+                        contact: {{user.contact}}
+                    </h3>
+                </div>
+            </div>
+        </mat-card>
+
+    </div>
+
+    <div class="left">
+    <button mat-raised-button color="primary" class="CP" (click)="changePwd()">Chang Password</button>
+    </div>
+</div>
