@@ -1,3 +1,14 @@
-venv/
+# Node modules (for frontend)
 node_modules/
-*.pyc
+
+
+#Python virtual env (for backend)
+venv/
+__pycache__/
+
+#OS/IDE specific
+.DS_Store
+.env
+*.log
+
+
