@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Complaint Portal</a>
+    <div class="d-flex">
+      <button class="btn btn-outline-primary me-2">Login</button>
+      <button class="btn btn-primary">Sign In</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Submit a Complaint</h2>
+  <form (ngSubmit)="onSubmit()" #complaintForm="ngForm">
+    <div class="mb-3">
+      <label for="complaint" class="form-label">Complaint</label>
+      <textarea
+        id="complaint"
+        class="form-control"
+        name="complaint"
+        required
+        [(ngModel)]="complaintText"
+        rows="5"
+        placeholder="Enter your complaint...">
+      </textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        name="email"
+        required
+        [(ngModel)]="email"
+        placeholder="Enter your email" />
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="!complaintForm.form.valid">
+      Submit Complaint
+    </button>
+  </form>
+</div>
+
