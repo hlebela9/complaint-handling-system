@@ -1,0 +1,43 @@
+### Backend (Python/Flask) ###
+# Bytecode and cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+bin/
+lib/
+include/
+
+# Environment files (CRITICAL for MySQL credentials)
+.env
+.env.local
+.env.*.local
+
+# Logs and diagnostics
+*.log
+logs/
+
+# MySQL specific (ignore local dumps)
+*.sql
+*.dump
+!schema.sql  # Keep your schema file if needed
+
+### Frontend (Angular) ###
+node_modules/
+dist/
+.cache/
+*.tsbuildinfo
+
+# IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# System
+Thumbs.db

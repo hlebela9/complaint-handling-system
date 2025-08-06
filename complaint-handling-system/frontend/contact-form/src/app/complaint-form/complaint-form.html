@@ -1,0 +1,109 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color: green;" href="#"><b>NEDBANK</b></a>
+    <div class="d-flex">
+      <button class="btn btn-outline-primary me-2">Nedbank LOGO</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h2>Submit a Complaint</h2>
+  <form (ngSubmit)="onSubmit()" #complaintForm="ngForm">
+   
+    <div class="mb-3" style="position: relative; width: 100%; max-width: 700px; margin: 20px auto;">
+      <textarea
+        name="complaintText"
+        [(ngModel)]="complaintText"
+        required
+        rows="4"
+        placeholder="Type a message..."
+        class="form-control"
+        style="
+          padding: 12px 120px 12px 12px;
+          font-size: 15px;
+          border-radius: 18px;
+          background: #f9fafb;
+          resize: vertical;
+          outline: none;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        ">
+      </textarea>
+
+      <!-- Icon container -->
+      <div style="
+          position: absolute;
+          bottom: 10px;
+          right: 12px;
+          display: flex;
+          gap: 12px;
+          background: #f9fafb;
+          padding: 4px 6px;
+          border-radius: 16px;
+        ">
+
+       <!-- Realistic Mic Icon -->
+<svg onclick="alert('Voice recording feature will be activated.')"
+     xmlns="http://www.w3.org/2000/svg"
+     width="24" height="24"
+     fill="none"
+     stroke="#6b7280"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     style="cursor: pointer;"
+     viewBox="0 0 24 24">
+  <title>Record Voice</title>
+  <path d="M12 14a3 3 0 0 0 3-3V7a3 3 0 0 0-6 0v4a3 3 0 0 0 3 3z"/>
+  <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+  <line x1="12" y1="19" x2="12" y2="23"/>
+  <line x1="8" y1="23" x2="16" y2="23"/>
+</svg>
+
+
+        <!-- Image Icon -->
+        <svg onclick="alert('Image upload feature will be activated.')"
+            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#6b7280"
+            viewBox="0 0 16 16" style="cursor: pointer;">
+          <title>Attach Image</title>
+          <path d="M4.002 8a1 1 0 1 1 2.001 0 1 1 0 0 1-2.001 0z"/>
+          <path d="M14 3H2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM2 4h12a1 1 0 0 1 1 1v5.5l-3.15-3.15a.5.5 0 0 0-.7 0L8 10.293 6.35 8.65a.5.5 0 0 0-.7 0L1 12V5a1 1 0 0 1 1-1z"/>
+        </svg>
+
+        <!-- File Icon -->
+        <svg onclick="alert('File attachment feature will be activated.')"
+            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#6b7280"
+            viewBox="0 0 16 16" style="cursor: pointer;">
+          <title>Attach File</title>
+          <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5.5L9.5 0H4zm5 1.5L13 6H9a1 1 0 0 1-1-1V1.5z"/>
+        </svg>
+
+        
+      </div>
+    </div>
+
+    <div class="mb-4">
+  <label for="email" class="form-label" style="font-weight: 600; color: #1f2937;">
+    Email Address
+  </label>
+  <input
+    type="email"
+    id="email"
+    name="email"
+    class="form-control shadow-sm"
+    required
+    [(ngModel)]="email"
+    placeholder="e.g. you@example.com"
+    style="border-radius: 0.5rem; padding: 0.75rem; font-size: 1rem;" />
+</div>
+
+<button
+  class="btn btn-success w-100 shadow"
+  type="submit"
+  [disabled]="!complaintForm.form.valid"
+  style="border-radius: 0.5rem; font-weight: 600; padding: 0.6rem 1.2rem;">
+  Submit Complaint
+</button>
+
+  </form>
+</div>

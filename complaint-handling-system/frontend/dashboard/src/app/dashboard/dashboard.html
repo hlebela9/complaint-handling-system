@@ -1,0 +1,88 @@
+<div class="dashboard-container">
+  <h1>Complaints Dashboard</h1>
+
+  <!-- Summary Cards -->
+  <section class="stats">
+    <div class="card">
+      <h3>Total Complaints</h3>
+      <p>{{ complaints.length }}</p>
+    </div>
+    <div class="card">
+      <h3>Unprocessed</h3>
+      <p>{{ unprocessedCount }}</p>
+    </div>
+    <div class="card">
+      <h3>Processing</h3>
+      <p>{{ processingCount }}</p>
+    </div>
+    <div class="card">
+      <h3>Escalated</h3>
+      <p>{{ escalatedCount }}</p>
+    </div>
+    <div class="card">
+      <h3>Resolved</h3>
+      <p>{{ resolvedCount }}</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <div class="filter-section">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" [(ngModel)]="filterStatus" (change)="applyFilter()">
+      <option value="All">All</option>
+      <option value="Unprocessed">Unprocessed</option>
+      <option value="Processing">Processing</option>
+      <option value="Processed">Processed</option>
+      <option value="Escalated">Escalated</option>
+      <option value="Resolved">Resolved</option>
+    </select>
+  </div>
+
+  <!-- Complaints Table -->
+  <table class="complaints-table">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Complaint</th>
+        <th>Department</th>
+        <th>Type</th>
+        <th>Classification</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let complaint of filteredComplaints">
+        <td>{{ complaint.userId }}</td>
+        <td>{{ complaint.complain }}</td>
+        <td>{{ complaint.department || 'N/A' }}</td>
+        <td>{{ complaint.type }}</td>
+        <td>{{ complaint.classification }}</td>
+        <td>
+          <span class="status-badge" [ngClass]="complaint.status.toLowerCase()">
+            {{ complaint.status }}
+          </span>
+        </td>
+        <td>{{ complaint.dateTime | date:'mediumDate' }}</td>
+        <td>{{ complaint.dateTime | date:'shortTime' }}</td>
+        <td>
+          <select [(ngModel)]="complaint.status" (change)="onStatusChange()">
+            <option value="Unprocessed">Unprocessed</option>
+            <option value="Processing">Processing</option>
+            <option value="Processed">Processed</option>
+            <option value="Escalated">Escalated</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Monthly Chart -->
+  <div class="chart-container">
+    <h2>Monthly Complaints Statistics</h2>
+    <canvas id="monthlyChart"></canvas>
+  </div>
+</div>
