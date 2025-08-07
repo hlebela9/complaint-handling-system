@@ -1,4 +1,4 @@
-from decouple import config # type: ignore
+from decouple import config  # type: ignore
 
 class Config:
     DB_HOST = config('DB_HOST')
@@ -11,4 +11,7 @@ class Config:
 
     @property
     def SQLALCHEMY_DATABASE_URI(self):
-        return f"mysql+mysqlconnector://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+        return (
+            f"mysql+mysqlconnector://{self.DB_USER}:{self.DB_PASSWORD}"
+            f"@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+        )

@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
 from mysql.connector import Error
+from flask import send_from_directory
+import os
 from datetime import datetime
 import uuid
 import os
@@ -25,6 +27,22 @@ def get_db_connection():
     except Error as e:
         print(f"Error connecting to MySQL: {e}")
         return None
+
+@app.route('/')
+def index():
+    return jsonify({"message": "Complaint Handling API is running."})
+
+
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(
+        os.path.join(app.root_path, 'static'),
+        'favicon.ico',
+        mimetype='image/vnd.microsoft.icon'
+    )
 
 # API Routes
 @app.route('/api/complaints', methods=['POST'])
